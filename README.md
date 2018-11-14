@@ -15,7 +15,7 @@ Safe for production async wrapper around GELF & Graylog
 create `config/initializers/rocket_graylog.rb` with content:
 
 ```ruby 
-  RockerGraylog.configure do |cfg|
+  RocketGraylog.configure do |cfg|
     cfg.facility    = "APPLICATION"
     cfg.host        = ENV["GRAYLOG"]
     cfg.port        = 5514
@@ -53,9 +53,9 @@ send event
 RocketGraylog.notify("message", { :a => 100 })
 ```
 
-send event with context: 'finmon'
+send event with _topic: 'finmon'
 ```ruby
-RocketGraylog.finmon_notify("message")
+RocketGraylog.notify_finmon("message")
 ```
 
 tests/specs:

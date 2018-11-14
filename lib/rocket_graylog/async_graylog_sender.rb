@@ -1,5 +1,6 @@
 require 'concurrent'
 require 'retriable'
+require "gelf"
 
 class AsyncGraylogSender
 

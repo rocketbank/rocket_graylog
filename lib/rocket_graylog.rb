@@ -1,6 +1,5 @@
 require "rocket_graylog/version"
 require "rocket_graylog/async_graylog_sender"
-require "gelf"
 
 module RocketGraylog
 
@@ -43,7 +42,7 @@ module RocketGraylog
       end
     end
 
-    options.merge(full_message: options[:context].pretty_inspect) if !options[:full_message] && options[:context]
+    options.merge(full_message: options[:context]) if !options[:full_message] && options[:context]
 
     notify message, options.merge(_topic: method_name.to_s.match(/^notify_(\S+)/)[1])
   end

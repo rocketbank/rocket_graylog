@@ -88,5 +88,25 @@ RSpec.describe RocketGraylog do
 
   end
 
+  context "#long_execution_detector" do
+
+    it 'will not notify if block not cross trashold' do
+      RocketGraylog.long_execution_detector(:name => 'test', :context => { :test => 'data' }, :threshold => 1) do
+        sleep(0)
+      end
+
+      expect(RocketGraylog.queue.size).to eq(0)
+    end
+
+    it 'will notify if block not cross trashold' do
+     RocketGraylog.long_execution_detector(:name => 'test', :context => { :test => 'data' }, :threshold => 1) do
+        sleep(2)
+      end
+
+      expect(RocketGraylog.queue.size).to eq(1)
+    end
+
+  end
+
 
 end

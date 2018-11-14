@@ -66,7 +66,7 @@ class AsyncGraylogSender
     if @async_mode == true
       queue.async.send_message(message, options)
     else
-      send_message(message, options)
+      queue.send_message(message, options)
     end
   end
 

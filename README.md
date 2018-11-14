@@ -12,38 +12,44 @@ Safe for production async wrapper around GELF & Graylog
 
 ## Rails configuration
 
+Gemfile:
+
+```ruby
+gem 'rocket_graylog', github: 'rocketbank/rocket_graylog'
+```
+
 create `config/initializers/rocket_graylog.rb` with content:
 
 ```ruby 
-  RocketGraylog.configure do |cfg|
-    cfg.facility    = "APPLICATION"
-    cfg.host        = ENV["GRAYLOG"]
-    cfg.port        = 5514
-    cfg.protocol    = :tcp # :upd
+RocketGraylog.configure do |cfg|
+  cfg.facility    = "APPLICATION"
+  cfg.host        = ENV["GRAYLOG"]
+  cfg.port        = 5514
+  cfg.protocol    = :tcp # :upd
 
-    # raise errors on graylog host errors 
-    # false means errors will be supressed and do not affect application
-    # but message will be lost
-    cfg.graylog_errors = false 
+  # raise errors on graylog host errors 
+  # false means errors will be supressed and do not affect application
+  # but message will be lost
+  cfg.graylog_errors = false 
 
-    # retry on graylog host errors, just provide options for Retriable 
-    cfg.retry_on_host_errors = {
-      :on => [Timeout::Error, Errno::ECONNREFUSED], tries => 3
-    }
+  # retry on graylog host errors, just provide options for Retriable 
+  cfg.retry_on_host_errors = {
+    :on => [Timeout::Error, Errno::ECONNREFUSED], :tries => 3
+  }
 
-    # uncomment to disable message send retring
-    # cfg.retry_on_host_errors = nil
+  # uncomment to disable message send retring
+  # cfg.retry_on_host_errors = nil
 
-    # timeout for sending message to Gelf 
-    cfg.send_timeout = 0.5
-  
-    # provide block for error notifications
-    cfg.errors_hook = lambda do |error|
-      Honeybadger.notify(error)
-    end
+  # timeout for sending message to Gelf 
+  cfg.send_timeout = 0.5
 
-    cfg.test_mode   = Rails.env.test?
+  # provide block for error notifications
+  cfg.error_hook = lambda do |error|
+    Honeybadger.notify(error)
   end
+
+  cfg.test_mode   = Rails.env.test?
+end
 ```
 
 ## Usage

@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.2"
 
-  spec.add_dependency "gelf", "3.1.0"
-  spec.add_dependency "retriable", "3.1.2"
-  spec.add_dependency "concurrent-ruby", "1.0.5"
+  spec.add_dependency "gelf", ">= 3.0.0"
+  spec.add_dependency "retriable", ">= 3.1.0"
+  spec.add_dependency "concurrent-ruby", ">= 1.0.5"
 end

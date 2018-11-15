@@ -2,7 +2,7 @@
 
 Safe for production async wrapper around GELF & Graylog 
 
-- created at free time for http://rocketbank.ru
+- for http://rocketbank.ru
 
 ## Features
 
@@ -55,6 +55,17 @@ RocketGraylog.configure do |cfg|
 end
 ```
 
+Rails logging:
+
+Rails.application.configure do
+  ```ruby
+  gelf = GELF::Logger.new(ENV['GRAYLOG'], 5514, "LAN", { :facility => "APP", :protocol => GELF::Protocol::UDP })
+
+  gelf.rescue_network_errors = true
+  config.logger = gef
+end
+```
+
 ## Usage
 
 send event
@@ -84,4 +95,10 @@ it '...' do
   expect(RocketGraylog.queue.size).to eq(1)
   # ...
 end
+```
+
+handy alias
+
+```ruby
+  Graylog.notify("test log message")
 ```

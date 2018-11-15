@@ -29,7 +29,7 @@ class AsyncGraylogSender
                 :error_hook,
                 :debug
   
-  def initialize(test_mode: nil, async_mode: true, facility: 'APP', protocol: :tcp, host: 'localhost', port: 5514)
+  def initialize(test_mode: nil, async_mode: true, facility: 'APP', protocol: :tcp, host: 'localhost', port: 5514, graylog_errors: false)
     @test_mode = if test_mode.is_a?(TrueClass) || test_mode.is_a?(FalseClass)
       test_mode
     else
@@ -45,7 +45,7 @@ class AsyncGraylogSender
     @protocol       = protocol
     @host           = host
     @port           = port
-    @graylog_errors = false
+    @graylog_errors = graylog_errors
 
     unless @protocol == :tcp || @protocol == :udp
       raise RuntimeError, "Invalid protocol => #{@protocol.inspect}"
@@ -105,6 +105,8 @@ class AsyncGraylogSender
       facility: @facility, 
       protocol: gelf_protocol
     })
+
+    @gels.rescue_network_errors = !@graylog_errors
   end
 
   private def gelf_protocol

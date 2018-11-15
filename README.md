@@ -100,5 +100,5 @@ end
 handy alias
 
 ```ruby
-  Graylog.notify("test log message")
+Graylog.notify("test log message")
 ```

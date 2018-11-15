@@ -2,12 +2,15 @@
 
 Safe for production async wrapper around GELF & Graylog 
 
+- created at free time for http://rocketbank.ru
+
 ## Features
 
 - async send messages with concurrent-ruby actor
-- custom _topic with method_missing
+- slow block execution notification
 - all internal errors supressed by default (but you can turn it on)
 - retry politics with Retriable gem
+- custom _topic with method_missing
 - test-ready
 
 ## Rails configuration
@@ -15,7 +18,7 @@ Safe for production async wrapper around GELF & Graylog
 Gemfile:
 
 ```ruby
-gem 'rocket_graylog', github: 'rocketbank/rocket_graylog'
+gem 'rocket_graylog', github: 'pechorin/rocket_graylog'
 ```
 
 create `config/initializers/rocket_graylog.rb` with content:

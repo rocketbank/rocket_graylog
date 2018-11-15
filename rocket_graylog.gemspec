@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = %q{Safe async wrapper for Graylog}
   spec.homepage      = "http://github.com/rocketbank/rocket_graylog"
 
-  spec.metadata["allowed_push_host"] = "http://rocketbank.ru"
+  spec.metadata["allowed_push_host"] = "http://nexus.infra.msk.itc"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})

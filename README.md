@@ -18,7 +18,7 @@ Safe for production async wrapper around GELF & Graylog
 Gemfile:
 
 ```ruby
-gem 'rocket_graylog', github: 'pechorin/rocket_graylog'
+gem 'rocket_graylog', github: 'https://github.com/pechorin/rocket_graylog.git'
 ```
 
 create `config/initializers/rocket_graylog.rb` with content:

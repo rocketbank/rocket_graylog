@@ -67,6 +67,13 @@ send event with _topic: 'finmon'
 RocketGraylog.notify_finmon("message")
 ```
 
+notify if block time execution exceed threshold (10 seconds by default)
+```ruby
+RocketGraylog.long_execution_detector(name: 'my_tag', threshold: 100.seconds) do
+  sleep(101)
+end
+```
+
 tests/specs:
 ```ruby
 before(:each) do

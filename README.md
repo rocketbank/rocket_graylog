@@ -54,7 +54,7 @@ RocketGraylog.configure do |cfg|
 end
 ```
 
-Rails logging:
+Rails logging `config/environments/production.rb`:
 
 ```ruby
 Rails.application.configure do

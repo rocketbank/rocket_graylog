@@ -2,8 +2,6 @@
 
 Safe for production async wrapper around GELF & Graylog 
 
-- for http://rocketbank.ru
-
 ## Features
 
 - async send messages with concurrent-ruby actor

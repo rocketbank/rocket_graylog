@@ -46,9 +46,9 @@ RocketGraylog.configure do |cfg|
   cfg.send_timeout = 0.5
 
   # provide block for error notifications
-  cfg.error_hook = lambda do |error|
-    Honeybadger.notify(error)
-  end
+  # cfg.error_hook = lambda do |error|
+  #   Honeybadger.notify(error)
+  # end
 
   cfg.test_mode = Rails.env.test?
 end

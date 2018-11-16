@@ -17,8 +17,9 @@ Safe for production async wrapper around GELF & Graylog
 
 Gemfile:
 
+currently install available only through github:
 ```ruby
-gem 'rocket_graylog', github: 'https://github.com/pechorin/rocket_graylog.git'
+gem 'rocket_graylog', github: 'https://github.com/rocketbank/rocket_graylog.git'
 ```
 
 create `config/initializers/rocket_graylog.rb` with content:
@@ -51,7 +52,7 @@ RocketGraylog.configure do |cfg|
     Honeybadger.notify(error)
   end
 
-  cfg.test_mode   = Rails.env.test?
+  cfg.test_mode = Rails.env.test?
 end
 ```
 

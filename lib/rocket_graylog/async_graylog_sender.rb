@@ -107,6 +107,7 @@ class AsyncGraylogSender
     })
 
     @gelf.rescue_network_errors = !@graylog_errors
+    @gelf
   end
 
   private def gelf_protocol

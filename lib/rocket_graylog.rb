@@ -12,7 +12,7 @@ module RocketGraylog
   end
 
   def self.notify(message, options = {})
-    @@sender.notify(message, options)
+    !!@@sender.notify(message, options)
   end
 
   def self.sender

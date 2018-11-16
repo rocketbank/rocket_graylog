@@ -73,9 +73,9 @@ send event
 RocketGraylog.notify("message", { :a => 100 })
 ```
 
-send event with _topic: 'finmon'
+send event with _topic: 'alerts'
 ```ruby
-RocketGraylog.notify_finmon("message")
+RocketGraylog.notify_alerts("message")
 ```
 
 notify if block time execution exceed threshold (10 seconds by default)

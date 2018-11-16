@@ -57,8 +57,8 @@ end
 
 Rails logging:
 
+```ruby
 Rails.application.configure do
-  ```ruby
   gelf = GELF::Logger.new(ENV['GRAYLOG'], 5514, "LAN", { :facility => "APP", :protocol => GELF::Protocol::UDP })
 
   gelf.rescue_network_errors = true

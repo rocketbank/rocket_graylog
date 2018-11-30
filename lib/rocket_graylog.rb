@@ -12,6 +12,10 @@ module RocketGraylog
   end
 
   def self.notify(message, options = {})
+    if message == nil || message == ""
+      return
+    end
+
     !!@@sender.notify(message, options)
   end
 

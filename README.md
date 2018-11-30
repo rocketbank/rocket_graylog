@@ -82,6 +82,7 @@ RocketGraylog.long_execution_detector(name: 'my_tag', threshold: 100.seconds) do
   sleep(101)
 end
 ```
+you will receive message `long_execution_detector long_execution_detector_my_tag cost:101 threshold:100`
 
 tests/specs:
 ```ruby

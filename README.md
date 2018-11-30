@@ -33,14 +33,15 @@ RocketGraylog.configure do |cfg|
   # false means errors will be supressed and do not affect application
   # but message will be lost
   cfg.graylog_errors = false 
+  
+  # do not retry on host errors
+  cfg.retry_on_host_errors = false
 
-  # retry on graylog host errors, just provide options for Retriable 
-  cfg.retry_on_host_errors = {
-    :on => [Timeout::Error, Errno::ECONNREFUSED], :tries => 3
-  }
+  # to retry request on graylog host errors just provide options for Retriable gem:
+  # cfg.retry_on_host_errors = {
+  #  :on => [Timeout::Error, Errno::ECONNREFUSED], :tries => 3
+  # }
 
-  # uncomment to disable message send retring
-  # cfg.retry_on_host_errors = nil
 
   # timeout for sending message to Gelf 
   cfg.send_timeout = 0.5

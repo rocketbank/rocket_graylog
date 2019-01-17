@@ -17,7 +17,7 @@ Gemfile:
 
 currently install available only through github:
 ```ruby
-gem 'rocket_graylog', github: 'https://github.com/rocketbank/rocket_graylog.git'
+gem 'rocket_graylog', git: 'https://github.com/rocketbank/rocket_graylog.git'
 ```
 
 create `config/initializers/rocket_graylog.rb` with content:
@@ -56,7 +56,7 @@ Rails logging `config/environments/production.rb`:
 ```ruby
 Rails.application.configure do
   gelf = GELF::Logger.new(ENV['GRAYLOG'], 5514, "LAN", { :facility => "APPLICATION", :protocol => GELF::Protocol::UDP })
-  gelf.rescue_network_errors = true
+  gelf.rescue_network_errors = true # prevents application crashes on log failuring
   config.logger = gelf
 end
 ```
